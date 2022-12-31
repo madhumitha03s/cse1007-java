@@ -20,7 +20,7 @@ class QuestionA {
             }
             sum += ((num % Math.pow(10, (count - 1))) / (Math.pow(10, (count - 2))));
         }
-        System.out.println(sum);
+        System.out.println("\nSum: " + sum);
         scan.close();
     }
 }
