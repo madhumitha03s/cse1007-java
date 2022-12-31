@@ -1,0 +1,47 @@
+// Write a Java program for the following game: 
+// 1. There are 5 rounds and three players. Each player can start the game after rolling 6. 
+// 2. Once 6 is rolled and game starts for a player. 
+//      If he throws a even value then add the double of even value as score. 
+//      If odd add the value and then reverse. 
+// 3. Find and display the player number and score of the player who scored maximum. 
+// 4. If no one starts the game then print "game over".
+
+import java.util.*;
+
+class QuestionB {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int numRounds = 5;
+        int numPlayers = 3;
+        int[][] diceRoll = new int[numPlayers][numRounds];
+        int[][] scores = new int[numPlayers][numRounds];
+        for (int i = 0; i < numPlayers; i++) {
+            for (int j = 0; j < numRounds; j++) {
+                diceRoll[i][j] = rollDice();
+                while (diceRoll[i][j] != 6) {
+                    scores[i][j] = diceRoll[i][j];
+                }
+                if (diceRoll[i][j] % 2 == 0) {
+                    scores[i][j] = scores[i][j - 1] + (int) Math.pow(diceRoll[i][j], 2);
+                } else {
+                    scores[i][j] = reverse(scores[i][j - 1] + diceRoll[i][j]);
+                }
+            }
+        }
+        System.out.println(Arrays.toString(diceRoll));
+        System.out.println(Arrays.toString(scores));
+
+        scan.close();
+    }
+
+    public static int rollDice() {
+        int randomInt = (int) ((Math.random() * 6) + 1);
+        return randomInt;
+    }
+
+    public static int reverse(int num) {
+        int a = num / 10;
+        int b = num % 10;
+        return ((b * 10) + a);
+    }
+}
