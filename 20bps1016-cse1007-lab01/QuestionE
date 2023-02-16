@@ -15,15 +15,17 @@
 
 import java.util.*;
 
-public class QuestionE {
+public class QnE {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter the pin: ");
         String pin = scan.nextLine();
         int count = 0;
         if (pin.length() == 3) {
-            if (pin.charAt(count) == '0' || pin.charAt(count) == '1' || pin.charAt(count) == '8') {
-                count++;
+            for (int i = 0; i < pin.length(); i++) {
+                if (pin.charAt(i) == '0' || pin.charAt(i) == '1' || pin.charAt(i) == '8') {
+                    count++;
+                }
             }
             if (count == pin.length()) {
                 if (pin.charAt(0) == pin.charAt(2)) {
