@@ -8,40 +8,56 @@
 
 import java.util.*;
 
-class QuestionB {
+public class QuestionB {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int numRounds = 5;
         int numPlayers = 3;
         int[][] diceRoll = new int[numPlayers][numRounds];
         int[][] scores = new int[numPlayers][numRounds];
+        int[] maxScores = new int[numPlayers];
+        int maxScorePlayer = -1;
+
+        // Roll dice for each player and calculate their scores for each round
         for (int i = 0; i < numPlayers; i++) {
+            boolean gameStarted = false;
             for (int j = 0; j < numRounds; j++) {
-                diceRoll[i][j] = rollDice();
-                while (diceRoll[i][j] != 6) {
-                    scores[i][j] = diceRoll[i][j];
+                diceRoll[i][j] = scan.nextInt();
+                if (diceRoll[i][j] == 6) {
+                    gameStarted = true;
                 }
-                if (diceRoll[i][j] % 2 == 0) {
-                    scores[i][j] = scores[i][j - 1] + (int) Math.pow(diceRoll[i][j], 2);
-                } else {
-                    scores[i][j] = reverse(scores[i][j - 1] + diceRoll[i][j]);
+                if (gameStarted) {
+                    if (diceRoll[i][j] % 2 == 0) {
+                        scores[i][j] = scores[i][j - 1] + 2 * diceRoll[i][j];
+                    } else {
+                        scores[i][j] = reverse(scores[i][j - 1] + diceRoll[i][j]);
+                    }
                 }
             }
+            // Calculate max score and player
+            for (int j = 0; j < numRounds; j++) {
+                maxScores[i] = Math.max(maxScores[i], scores[i][j]);
+            }
+            if (maxScores[i] > maxScores[maxScorePlayer]) {
+                maxScorePlayer = i;
+            }
         }
-        System.out.println(Arrays.toString(diceRoll));
-        System.out.println(Arrays.toString(scores));
+
+        if (maxScorePlayer == -1) {
+            System.out.println("Game over");
+        } else {
+            System.out.println("Player " + (maxScorePlayer + 1) + " - Score: " + maxScores[maxScorePlayer]);
+        }
 
         scan.close();
     }
 
-    public static int rollDice() {
-        int randomInt = (int) ((Math.random() * 6) + 1);
-        return randomInt;
-    }
-
     public static int reverse(int num) {
-        int a = num / 10;
-        int b = num % 10;
-        return ((b * 10) + a);
+        int reversed = 0;
+        while (num != 0) {
+            reversed = reversed * 10 + num % 10;
+            num /= 10;
+        }
+        return reversed;
     }
 }
