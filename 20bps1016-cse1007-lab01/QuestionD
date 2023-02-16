@@ -5,9 +5,10 @@
  * In ith layer the number of red petals will be equal to the number of orange petals in i-1th layer 
  * and number of orange petals will be equal to total of red and orange petals of the i-1th layer. 
  * For a given layer, find the number of petals. */
+
 import java.util.*;
 
-public class QuestionD {
+public class QnD {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int red[] = new int[10];
@@ -20,9 +21,9 @@ public class QuestionD {
             orange[i] = red[i - 1] + orange[i - 1];
             total[i] = red[i] + orange[i];
         }
-        System.out.print("Enter the input: ");
+        System.out.print("Enter the layer number: ");
         int layerNum = scan.nextInt();
-        System.out.println(total[layerNum - 1]);
+        System.out.println("Number of petals: " + total[layerNum - 1]);
         scan.close();
     }
 }
