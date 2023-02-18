@@ -37,7 +37,7 @@ Based on cutomization and quantity order display the price.
 
 import java.util.*;
 
-public class QuestionC {
+public class Toblerone {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int side[] = new int[3];
