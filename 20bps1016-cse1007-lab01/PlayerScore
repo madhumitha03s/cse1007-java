@@ -8,7 +8,7 @@
 
 import java.util.*;
 
-public class QuestionB {
+public class PlayerScore {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int numRounds = 5;
