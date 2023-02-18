@@ -8,7 +8,7 @@
 
 import java.util.*;
 
-public class QnD {
+public class PetalPattern {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int red[] = new int[10];
