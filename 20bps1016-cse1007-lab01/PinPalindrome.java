@@ -15,7 +15,7 @@
 
 import java.util.*;
 
-public class QnE {
+public class PinPalindrome {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter the pin: ");
