@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-class QuestionA {
+class Sum {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Number of input values: ");
