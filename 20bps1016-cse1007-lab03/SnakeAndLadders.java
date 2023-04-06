@@ -10,7 +10,7 @@ public class SnakeAndLadders {
     private static final int[] ladderTops = { 25, 62, 78, 84, 96, 89 };
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         int numPlayers = 2;
         int[] playerPositions = new int[numPlayers];
         Arrays.fill(playerPositions, 0);
@@ -18,7 +18,7 @@ public class SnakeAndLadders {
 
         while (true) {
             System.out.println("Player " + (currentPlayer + 1) + "'s turn. Press enter to roll the dice.");
-            scanner.nextLine();
+            scan.nextLine();
             int roll = rollDice();
             playerPositions[currentPlayer] += roll;
 
@@ -56,7 +56,7 @@ public class SnakeAndLadders {
             }
         }
 
-        scanner.close();
+        scan.close();
     }
 
     private static int rollDice() {
