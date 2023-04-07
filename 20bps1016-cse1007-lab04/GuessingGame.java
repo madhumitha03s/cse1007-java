@@ -10,7 +10,7 @@ public class GuessingGame {
         Scanner scan = new Scanner(System.in);
         int score = 100;
         int randomNumber = generateRandomNumber();
-        System.out.println("Guess the random number between 0-20!\n");
+        System.out.println("Guess the random number between 0-20!");
         int guess = scan.nextInt();
         while (guess != randomNumber) {
             if (guess < 0 || guess > 20) {
